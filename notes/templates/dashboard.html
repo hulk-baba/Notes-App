@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<a href ='/notes/logout/'>Logout</a>
+<h2>Dashboard of {{ user }}</h2>
+
+<form name="notesUpdateForm" action="/notes/dashboard/" method="post"> {% csrf_token %}
+	{{ formset.management_form }}
+	{% for form in formset %}
+		{{ form.id }}
+		{{ form.title }}
+		{{ form.text }}
+		{{ form.createTime }}
+		{{form.DELETE}}
+		</br>
+	{% endfor %}
+	<input type="submit" value="Update">
+</form>
+{% endblock %}
